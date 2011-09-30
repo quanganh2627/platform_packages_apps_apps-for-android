@@ -20,6 +20,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.android.lolcat"
           android:versionCode="2" android:versionName="2.0">
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
     <application android:icon="@drawable/app_icon"
                  android:label="Lolcat Builder">
         <activity android:name="LolcatActivity">
