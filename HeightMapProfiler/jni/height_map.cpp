@@ -397,13 +397,13 @@ static int registerNativeMethods(JNIEnv* env, const char* className,
     	char error[255];
         sprintf(error,
             "Native registration unable to find class '%s'\n", className);
-        __android_log_print(ANDROID_LOG_ERROR, "HeightMapProfiler", error);
+        __android_log_print(ANDROID_LOG_ERROR, "HeightMapProfiler", "%s", error);
         return JNI_FALSE;
     }
     if (env->RegisterNatives(clazz, gMethods, numMethods) < 0) {
     	char error[255];
     	sprintf(error, "RegisterNatives failed for '%s'\n", className);
-        __android_log_print(ANDROID_LOG_ERROR, "HeightMapProfiler", error);
+        __android_log_print(ANDROID_LOG_ERROR, "HeightMapProfiler", "%s", error);
         return JNI_FALSE;
     }
 
