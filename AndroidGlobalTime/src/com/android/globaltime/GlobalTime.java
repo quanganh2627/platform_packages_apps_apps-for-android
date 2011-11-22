@@ -1238,6 +1238,13 @@ class GTView extends SurfaceView implements SurfaceHolder.Callback {
         mNumTriangles = 0;
 
         EGL10 egl = (EGL10)EGLContext.getEGL();
+
+        /* Make out context current in case 2D drawing used difference GL
+         * context.
+         */
+        egl.eglMakeCurrent(mEGLDisplay, mEGLSurface, mEGLSurface,
+                        mEGLContext);
+
         GL10 gl = (GL10)mEGLContext.getGL();
 
         if (!mInitialized) {
