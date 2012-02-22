@@ -355,9 +355,6 @@ public class C2B extends Activity {
     c2bFilesAlert.setNeutralButton(getString(R.string.MOAR_STAGES), new OnClickListener() {
       public void onClick(DialogInterface dialog, int which) {
         Intent i = new Intent();
-        ComponentName comp =
-            new ComponentName("com.android.browser", "com.android.browser.BrowserActivity");
-        i.setComponent(comp);
         i.setAction("android.intent.action.VIEW");
         i.addCategory("android.intent.category.BROWSABLE");
         Uri uri = Uri.parse("http://groups.google.com/group/clickin-2-da-beat/files");
@@ -504,9 +501,6 @@ public class C2B extends Activity {
     noFilesMessage.setNeutralButton(getString(R.string.ILL_GET_STAGES), new OnClickListener() {
       public void onClick(DialogInterface dialog, int which) {
         Intent i = new Intent();
-        ComponentName comp =
-            new ComponentName("com.android.browser", "com.android.browser.BrowserActivity");
-        i.setComponent(comp);
         i.setAction("android.intent.action.VIEW");
         i.addCategory("android.intent.category.BROWSABLE");
         Uri uri = Uri.parse("http://groups.google.com/group/clickin-2-da-beat/files");
@@ -574,9 +568,6 @@ public class C2B extends Activity {
     startupMessage.setNeutralButton(getString(R.string.VISIT_WEBSITE), new OnClickListener() {
       public void onClick(DialogInterface dialog, int which) {
         Intent i = new Intent();
-        ComponentName comp =
-            new ComponentName("com.android.browser", "com.android.browser.BrowserActivity");
-        i.setComponent(comp);
         i.setAction("android.intent.action.VIEW");
         i.addCategory("android.intent.category.BROWSABLE");
         Uri uri = Uri.parse("http://groups.google.com/group/clickin-2-da-beat");
