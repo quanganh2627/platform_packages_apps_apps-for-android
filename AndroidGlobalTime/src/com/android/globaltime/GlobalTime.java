@@ -25,6 +25,9 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.inputmethod.InputMethodManager;
 
 import javax.microedition.khronos.egl.*;
 import javax.microedition.khronos.opengles.*;
@@ -1394,6 +1397,7 @@ class GTView extends SurfaceView implements SurfaceHolder.Callback {
  * The main activity class for GlobalTime.
  */
 public class GlobalTime extends Activity {
+    private static final int MENU_KBD = Menu.FIRST + 1;
 
     GTView gtView = null;
 
@@ -1407,6 +1411,26 @@ public class GlobalTime extends Activity {
     @Override protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         setGTView();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        menu.add(0, MENU_KBD, 0, R.string.menu_keyboard);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case MENU_KBD: {
+                InputMethodManager inputManager = (InputMethodManager)
+                        getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputManager.showSoftInput(gtView, 0);
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override protected void onResume() {
