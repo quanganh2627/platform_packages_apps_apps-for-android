@@ -33,6 +33,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.widget.ImageView;
 import android.widget.ViewAnimator;
+import android.widget.Toast;
 
 import java.util.Random;
 import java.util.List;
@@ -375,10 +376,17 @@ public class PhotostreamActivity extends Activity implements
 
         @Override
         public void onPostExecute(Flickr.PhotoList result) {
-            mPageCount = result.getPageCount();
+            if (result == null) {
+                mPageCount = 0;
+                Toast.makeText(mSwitcher.getContext(), R.string.network_unavailable,
+                               Toast.LENGTH_SHORT).show();
+                finish();
+            } else {
+                mPageCount = result.getPageCount();
+            }
             prepareMenu(mPageCount);
             mSwitcher.showNext();
-            mTask = null;            
+            mTask = null;
         }
     }
 

@@ -63,6 +63,7 @@
     <string name="preferences_ring_summary">Also play ringtone when new photos are available</string>
 
     <string name="preferences_ringtone">Select ringtone</string>
+    <string name="network_unavailable">Network is unavailable</string>
 
     <!-- EULA -->
     <string name="eula_title">License agreement</string>

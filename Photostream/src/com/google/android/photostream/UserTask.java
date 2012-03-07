@@ -200,8 +200,7 @@ public abstract class UserTask<Params, Progress, Result> {
                 } catch (InterruptedException e) {
                     android.util.Log.w(LOG_TAG, e);
                 } catch (ExecutionException e) {
-                    throw new RuntimeException("An error occured while executing doInBackground()",
-                            e.getCause());
+                    android.util.Log.w(LOG_TAG, e);
                 } catch (CancellationException e) {
                     message = sHandler.obtainMessage(MESSAGE_POST_CANCEL,
                             new UserTaskResult<Result>(UserTask.this, (Result[]) null));
