@@ -31,9 +31,11 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.WindowManager;
 import android.view.SurfaceHolder.Callback;
 import android.widget.Toast;
 
@@ -86,6 +88,10 @@ public class Demo_Multiscreen extends Activity implements Callback {
 
     private String downDevice = "";
 
+    private static float startX = 0;
+
+    private static float startY = 0;
+
     private OnMessageReceivedListener dataReceivedListener = new OnMessageReceivedListener() {
         public void OnMessageReceived(String device, String message) {
             if (message.startsWith("ASSIGNMENT:")) {
@@ -131,25 +137,29 @@ public class Demo_Multiscreen extends Activity implements Callback {
 
     private OnConnectionLostListener disconnectedListener = new OnConnectionLostListener() {
         public void OnConnectionLost(String device) {
+            WindowManager w = getWindowManager();
+            Display d = w.getDefaultDisplay();
+            int width = d.getWidth();
+            int height = d.getHeight();
             if (rightDevice.equals(device)) {
                 rightDevice = "";
                 if (mPosition == RIGHT) {
-                    mBall = new Demo_Ball(true);
+                    mBall = new Demo_Ball(true, width, height - 60);
                 }
             } else if (leftDevice.equals(device)) {
                 leftDevice = "";
                 if (mPosition == LEFT) {
-                    mBall = new Demo_Ball(true);
+                    mBall = new Demo_Ball(true, width, height - 60);
                 }
             } else if (upDevice.equals(device)) {
                 upDevice = "";
                 if (mPosition == UP) {
-                    mBall = new Demo_Ball(true);
+                    mBall = new Demo_Ball(true, width, height - 60);
                 }
             } else if (downDevice.equals(device)) {
                 downDevice = "";
                 if (mPosition == DOWN) {
-                    mBall = new Demo_Ball(true);
+                    mBall = new Demo_Ball(true, width, height - 60);
                 }
             }
         }
@@ -157,13 +167,17 @@ public class Demo_Multiscreen extends Activity implements Callback {
 
     private OnConnectionServiceReadyListener serviceReadyListener = new OnConnectionServiceReadyListener() {
         public void OnConnectionServiceReady() {
+            WindowManager w = getWindowManager();
+            Display d = w.getDefaultDisplay();
+            int width = d.getWidth();
+            int height = d.getHeight();
             if (mType == 0) {
-                mBall = new Demo_Ball(true);
+                mBall = new Demo_Ball(true, width, height - 60);
                 mConnection.startServer(4, connectedListener, maxConnectionsListener,
                         dataReceivedListener, disconnectedListener);
                 self.setTitle("MultiScreen: " + mConnection.getName() + "-" + mConnection.getAddress());
             } else {
-                mBall = new Demo_Ball(false);
+                mBall = new Demo_Ball(false, width, height - 60);
                 Intent serverListIntent = new Intent(self, ServerListActivity.class);
                 startActivityForResult(serverListIntent, SERVER_LIST_RESULT_CODE);
             }
@@ -328,9 +342,9 @@ public class Demo_Multiscreen extends Activity implements Callback {
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             lastTouchedTime = System.currentTimeMillis();
+            startX = event.getX();
+            startY = event.getY();
         } else if (event.getAction() == MotionEvent.ACTION_UP) {
-            float startX = event.getHistoricalX(0);
-            float startY = event.getHistoricalY(0);
             float endX = event.getX();
             float endY = event.getY();
             long timeMs = (System.currentTimeMillis() - lastTouchedTime);
