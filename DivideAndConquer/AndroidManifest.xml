@@ -21,4 +21,5 @@
 
         <activity android:name=".Preferences"/>
     </application>
-</manifest> 
+    <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="16"/>
+</manifest>
