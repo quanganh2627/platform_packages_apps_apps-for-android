@@ -95,5 +95,5 @@
         <service android:name=".CheckUpdateService" />
 
     </application>
-    <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="16"/>
+    <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="10"/>
 </manifest>

@@ -17,6 +17,6 @@
 	              android:configChanges="keyboardHidden|orientation" 
 	              android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"></activity>
 	</application>
-	<uses-sdk android:minSdkVersion="4" android:targetSdkVersion="16"/>
+	<uses-sdk android:minSdkVersion="4" android:targetSdkVersion="10"/>
 
 </manifest>
