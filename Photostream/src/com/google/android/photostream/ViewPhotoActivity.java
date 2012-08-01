@@ -67,7 +67,7 @@ public class ViewPhotoActivity extends Activity implements View.OnClickListener,
 
     private static final String EXTRA_PHOTO = "com.google.android.photostream.photo";
 
-    private static final String WALLPAPER_FILE_NAME = "wallpaper";
+    private static final String WALLPAPER_FILE_NAME = "wallpaper.jpg";
 
     private static final int REQUEST_CROP_IMAGE = 42;
 
