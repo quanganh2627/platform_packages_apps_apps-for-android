@@ -19,3 +19,6 @@ tracks on the device.  This is needed because Android does not currently
 come with a standard UI for this.  Note that RingsExtended has no built-in
 knowledge about MusicPicker: it just asks who can return audio content, one
 of which happens to be MusicPicker.
+
+It can be accessed throught the Settings menu when setting a ringtone or
+notification sound.
