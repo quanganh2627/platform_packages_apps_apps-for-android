@@ -16,28 +16,28 @@
 	android:layout_height="fill_parent">
 	<Button android:id="@+id/start_hockey_server"
 		android:layout_width="fill_parent" android:layout_height="wrap_content"
-		android:text="Start Air Hockey Demo Server" />
+		android:text="@string/label_start_hockey_server" />
 	<Button android:id="@+id/start_hockey_client"
 		android:layout_width="fill_parent" android:layout_height="wrap_content"
-		android:text="Start Air Hockey Demo Client" />
+		android:text="@string/label_start_hockey_client" />
 	<TextView android:layout_width="fill_parent"
 		android:layout_height="wrap_content"></TextView>
 
 	<Button android:id="@+id/start_demo_server"
 		android:layout_width="fill_parent" android:layout_height="wrap_content"
-		android:text="Start Multiscreen Demo Server" />
+		android:text="@string/label_start_demo_server" />
 	<Button android:id="@+id/start_demo_client"
 		android:layout_width="fill_parent" android:layout_height="wrap_content"
-		android:text="Start Multiscreen Demo Client" />
+		android:text="@string/label_start_demo_client" />
 	<TextView android:layout_width="fill_parent"
 		android:layout_height="wrap_content"></TextView>
     
   <Button android:id="@+id/start_video_server"
     android:layout_width="fill_parent" android:layout_height="wrap_content"
-    android:text="Start Video Demo Server" />
+    android:text="@string/label_start_video_server" />
   <Button android:id="@+id/start_video_client"
     android:layout_width="fill_parent" android:layout_height="wrap_content"
-    android:text="Start Video Demo Client" />        
+    android:text="@string/label_start_video_client" />
 	<TextView android:layout_width="fill_parent"
 		android:layout_height="wrap_content"></TextView>
     
@@ -45,5 +45,5 @@
 		android:layout_height="wrap_content"></TextView>	
 	<Button android:id="@+id/goto_website"
 		android:layout_width="fill_parent" android:layout_height="wrap_content"
-		android:text="Visit the Click, Link, Compete Website" />
+		android:text="@string/label_goto_website" />
 </LinearLayout>

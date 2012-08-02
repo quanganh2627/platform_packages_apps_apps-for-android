@@ -20,4 +20,11 @@
     <string name="app_name">Click,Link,Compete</string>
     <string name="DISCOVERABLE_MODE_NOT_ENABLED">Discoverable Mode Not Enabled</string>
     <string name="WARNING_MESSAGE">Warning: Discoverable mode has not been enabled.\n\nDevices which have not connected to your device before will not even know that it exists.\n\nWould you like to enable discoverable mode?</string>
+    <string name="label_start_hockey_server">Start Air Hockey Demo Server</string>
+    <string name="label_start_hockey_client">Start Air Hockey Demo Client</string>
+    <string name="label_start_demo_server">Start Multiscreen Demo Server</string>
+    <string name="label_start_demo_client">Start Multiscreen Demo Client</string>
+    <string name="label_start_video_server">Start Video Demo Server</string>
+    <string name="label_start_video_client">Start Video Demo Client</string>
+    <string name="label_goto_website">Visit the Click, Link, Compete Website</string>
 </resources>
