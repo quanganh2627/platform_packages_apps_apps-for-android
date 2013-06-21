@@ -164,8 +164,5 @@ public class ShortcutEditorDialog extends AlertDialog implements OnClickListener
         // Fill in the name field for editing
         mNameView.addTextChangedListener(this);
         mNameView.setText(intent.getStringExtra(Intent.EXTRA_SHORTCUT_NAME));
-
-        // Ensure the intent has the proper flags
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
     }
 }
