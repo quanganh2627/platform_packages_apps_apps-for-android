@@ -8,6 +8,7 @@ LOCAL_SRC_FILES := $(call all-java-files-under, src)
 LOCAL_PACKAGE_NAME := HeightMapProfiler
 
 LOCAL_JNI_SHARED_LIBRARIES := libheightmapprofiler
+LOCAL_REQUIRED_MODULES := libheightmapprofiler
 
 LOCAL_PROGUARD_ENABLED := disabled
 
