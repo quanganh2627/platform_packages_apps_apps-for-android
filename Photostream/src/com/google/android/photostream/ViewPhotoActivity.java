@@ -68,6 +68,8 @@ public class ViewPhotoActivity extends Activity implements View.OnClickListener,
     private static final String EXTRA_PHOTO = "com.google.android.photostream.photo";
 
     private static final String WALLPAPER_FILE_NAME = "wallpaper.jpg";
+    // The cropped wallpaper will be stored here.
+    private static final String WALLPAPER_OUTPUT_FILE = "wallpaper_out.jpg";
 
     private static final int REQUEST_CROP_IMAGE = 42;
 
@@ -260,6 +262,7 @@ public class ViewPhotoActivity extends Activity implements View.OnClickListener,
 
     private void cleanupWallpaper() {
         deleteFile(WALLPAPER_FILE_NAME);
+        deleteFile(WALLPAPER_OUTPUT_FILE);
         mSwitcher.showNext();
     }
 
@@ -326,6 +329,7 @@ public class ViewPhotoActivity extends Activity implements View.OnClickListener,
      */
     private class CropWallpaperTask extends UserTask<Flickr.Photo, Void, Boolean> {
         private File mFile;
+        private File mOutFile;
         private Uri _captureUri;
         private boolean startCrop;
                 
@@ -370,6 +374,7 @@ public class ViewPhotoActivity extends Activity implements View.OnClickListener,
         @Override
         public void onPreExecute() {
             mFile = getFileStreamPath(WALLPAPER_FILE_NAME);
+            mOutFile = getFileStreamPath(WALLPAPER_OUTPUT_FILE);
             mSwitcher.showNext();
         }
 
@@ -437,10 +442,11 @@ public class ViewPhotoActivity extends Activity implements View.OnClickListener,
                         intent.putExtra("aspectY", height);
                         intent.putExtra("scale", true);
                         intent.putExtra("noFaceDetection", true);
-                        intent.putExtra("output", Uri.parse("file:/" + mFile.getAbsolutePath()));
+                        intent.putExtra("output", Uri.fromFile(mOutFile));
                         //intent.putExtra( "", true ); // I seem to have lost the option to have the crop app auto rotate the image, any takers?
                         intent.putExtra( "return-data", false );
-                
+                        openFileOutput(mOutFile.getName(), MODE_WORLD_READABLE | MODE_WORLD_WRITEABLE);
+
                         for ( ResolveInfo res : list )
                         {
                             final CropOption co = new CropOption();
@@ -508,7 +514,7 @@ public class ViewPhotoActivity extends Activity implements View.OnClickListener,
             boolean success = false;
             InputStream in = null;
             try {
-                in = openFileInput(WALLPAPER_FILE_NAME);
+                in = openFileInput(WALLPAPER_OUTPUT_FILE);
                 setWallpaper(in);
                 success = true;
             } catch (IOException e) {
